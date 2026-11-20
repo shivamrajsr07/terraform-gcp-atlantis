@@ -1,23 +1,29 @@
 
 # Terraform working directories
-**/.terraform/*
+**/.terraform/
 
 # Terraform state files
 *.tfstate
 *.tfstate.*
-
-# Terraform plan files
 *.tfplan
 *.plan
 
-# Crash logs
+# Terraform crash logs
 crash.log
 crash.*.log
 
-# Local backup files
+# Local backups
 backups/
 
+# Downloaded Atlantis binaries
+atlantis
+atlantis_linux_amd64.zip
+
 # Credentials and secrets
-*.json
 *.pem
 *.key
+*.json
+
+# Local environment files
+.env
+.env.*
