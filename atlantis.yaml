@@ -20,7 +20,7 @@ projects:
     workflow: terraform-project1
 
   - name: project1-iam
-    dir: iam
+    dir: resources/iam
     workspace: project1-iam
     workflow: terraform-project1-iam
 
@@ -42,7 +42,7 @@ projects:
     workflow: terraform-project2
 
   - name: project2-iam
-    dir: iam
+    dir: resources/iam
     workspace: project2-iam
     workflow: terraform-project2-iam
 
@@ -66,10 +66,10 @@ workflows:
       steps:
         - init:
             extra_args:
-              - -backend-config=../backend/backend.tfbackend
+              - -backend-config=../../backend/backend.tfbackend
         - plan:
             extra_args:
-              - -var-file=../variables/project1.tfvars
+              - -var-file=../../variables/project1.tfvars
     apply:
       steps:
         - apply
@@ -92,10 +92,10 @@ workflows:
       steps:
         - init:
             extra_args:
-              - -backend-config=../backend/backend.tfbackend
+              - -backend-config=../../backend/backend.tfbackend
         - plan:
             extra_args:
-              - -var-file=../variables/project2.tfvars
+              - -var-file=../../variables/project2.tfvars
     apply:
       steps:
         - apply
