@@ -1,0 +1,23 @@
+
+# Terraform working directories
+**/.terraform/*
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.tfplan
+*.plan
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Local backup files
+backups/
+
+# Credentials and secrets
+*.json
+*.pem
+*.key

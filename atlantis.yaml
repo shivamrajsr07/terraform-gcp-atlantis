@@ -1,0 +1,101 @@
+
+version: 3
+
+projects:
+  # PROJECT 1
+
+  - name: project1-vpc
+    dir: resources/vpc
+    workspace: project1-vpc
+    workflow: terraform-project1
+
+  - name: project1-compute
+    dir: resources/compute
+    workspace: project1-compute
+    workflow: terraform-project1
+
+  - name: project1-storage
+    dir: resources/storage
+    workspace: project1-storage
+    workflow: terraform-project1
+
+  - name: project1-iam
+    dir: iam
+    workspace: project1-iam
+    workflow: terraform-project1-iam
+
+  # PROJECT 2
+
+  - name: project2-vpc
+    dir: resources/vpc
+    workspace: project2-vpc
+    workflow: terraform-project2
+
+  - name: project2-compute
+    dir: resources/compute
+    workspace: project2-compute
+    workflow: terraform-project2
+
+  - name: project2-storage
+    dir: resources/storage
+    workspace: project2-storage
+    workflow: terraform-project2
+
+  - name: project2-iam
+    dir: iam
+    workspace: project2-iam
+    workflow: terraform-project2-iam
+
+workflows:
+
+  terraform-project1:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              - -backend-config=../../backend/backend.tfbackend
+        - plan:
+            extra_args:
+              - -var-file=../../variables/project1.tfvars
+    apply:
+      steps:
+        - apply
+
+  terraform-project1-iam:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              - -backend-config=../backend/backend.tfbackend
+        - plan:
+            extra_args:
+              - -var-file=../variables/project1.tfvars
+    apply:
+      steps:
+        - apply
+
+  terraform-project2:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              - -backend-config=../../backend/backend.tfbackend
+        - plan:
+            extra_args:
+              - -var-file=../../variables/project2.tfvars
+    apply:
+      steps:
+        - apply
+
+  terraform-project2-iam:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              - -backend-config=../backend/backend.tfbackend
+        - plan:
+            extra_args:
+              - -var-file=../variables/project2.tfvars
+    apply:
+      steps:
+        - apply

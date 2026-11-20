@@ -1,0 +1,6 @@
+
+bucket = "terraform-atlantis-state-323515237807"
+
+prefix = "terraform-atlantis/states"
+
+impersonate_service_account = "terraform-deployer@terraform-atlantis-shivam-2026.iam.gserviceaccount.com"
