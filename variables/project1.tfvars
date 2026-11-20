@@ -1,25 +1,58 @@
-project_id = "terraform-atlantis-shivam-2026"
 
-region = "asia-south1"
-zone   = "asia-south1-a"
+project_config = {
+  # --------------------------------------------------
+  # PROJECT DETAILS
+  # --------------------------------------------------
+  project = {
+    id = "terraform-atlantis-shivam-2026"
+  }
 
-network_name            = "terraform-vpc-project1"
-auto_create_subnetworks = false
-routing_mode            = "REGIONAL"
+  # --------------------------------------------------
+  # LOCATION CONFIGURATION
+  # --------------------------------------------------
+  location = {
+    region = "asia-south1"
+    zone   = "asia-south1-a"
+  }
 
-instance_name = "terraform-vm-project1"
-machine_type  = "e2-micro"
-image         = "debian-cloud/debian-12"
-boot_disk_size = 10
-network        = "terraform-vpc-project1"
+  # --------------------------------------------------
+  # NETWORK CONFIGURATION
+  # --------------------------------------------------
+  network = {
+    name                    = "terraform-vpc-project1"
+    auto_create_subnetworks = false
+    routing_mode            = "REGIONAL"
+  }
 
-bucket_name        = "terraform-atlantis-project1-323515237807"
-storage_class      = "STANDARD"
-versioning_enabled = true
+  # --------------------------------------------------
+  # COMPUTE CONFIGURATION
+  # --------------------------------------------------
+  compute = {
+    instance_name = "terraform-vm-project1"
+    machine_type  = "e2-micro"
+    image         = "debian-cloud/debian-12"
+    boot_disk_size = 10
+    network_name  = "terraform-vpc-project1"
+  }
 
-service_account_email = "terraform-deployer@terraform-atlantis-shivam-2026.iam.gserviceaccount.com"
+  # --------------------------------------------------
+  # STORAGE CONFIGURATION
+  # --------------------------------------------------
+  storage = {
+    bucket_name        = "terraform-atlantis-project1-323515237807"
+    storage_class      = "STANDARD"
+    versioning_enabled = true
+  }
 
-iam_roles = [
-  "roles/compute.admin",
-  "roles/storage.admin"
-]
+  # --------------------------------------------------
+  # IAM CONFIGURATION
+  # --------------------------------------------------
+  iam = {
+    service_account_email = "terraform-deployer@terraform-atlantis-shivam-2026.iam.gserviceaccount.com"
+
+    roles = [
+      "roles/compute.admin",
+      "roles/storage.admin"
+    ]
+  }
+}
